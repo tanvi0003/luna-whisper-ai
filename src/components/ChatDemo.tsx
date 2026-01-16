@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Heart, Send, RotateCcw } from "lucide-react";
+import ScrollAnimationWrapper from "./ScrollAnimationWrapper";
 
 interface Message {
   id: number;
@@ -132,21 +133,21 @@ const ChatDemo = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full luna-glass mb-6 luna-animate-fade-in">
+        <ScrollAnimationWrapper animation="blur" className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full luna-glass mb-6">
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm text-muted-foreground">Live Demo</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-6 luna-animate-slide-up">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-6">
             <span className="text-foreground">Experience </span>
             <span className="luna-gradient-text">Luna</span>
           </h2>
           
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto luna-animate-slide-up" style={{ animationDelay: "0.1s" }}>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Watch how Luna creates meaningful conversations that feel natural and supportive
           </p>
-        </div>
+        </ScrollAnimationWrapper>
 
         {/* Chat Demo Container */}
         <div className="max-w-2xl mx-auto">

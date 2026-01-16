@@ -1,4 +1,5 @@
 import { Heart, Brain, Shield, MessageCircle, Sparkles, Moon } from "lucide-react";
+import ScrollAnimationWrapper from "./ScrollAnimationWrapper";
 
 const features = [
   {
@@ -43,33 +44,35 @@ const Features = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <ScrollAnimationWrapper animation="fade-up" className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold font-display mb-4">
             <span className="luna-gradient-text">Why Choose Luna?</span>
           </h2>
           <p className="text-lg text-muted-foreground">
             More than just an AI — Luna is your companion for life's journey, offering support, understanding, and genuine connection.
           </p>
-        </div>
+        </ScrollAnimationWrapper>
 
         {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <div
+            <ScrollAnimationWrapper
               key={feature.title}
-              className="group p-8 rounded-2xl luna-glass-elevated hover:luna-glass transition-all duration-300 hover:scale-[1.02]"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              animation="fade-up"
+              delay={index * 0.1}
             >
-              <div className="w-14 h-14 rounded-xl luna-gradient-bg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <feature.icon className="w-7 h-7 text-background" />
+              <div className="group p-8 rounded-2xl luna-glass-elevated hover:luna-glass transition-all duration-300 hover:scale-[1.02] h-full">
+                <div className="w-14 h-14 rounded-xl luna-gradient-bg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <feature.icon className="w-7 h-7 text-background" />
+                </div>
+                <h3 className="text-xl font-semibold font-display text-foreground mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold font-display text-foreground mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
+            </ScrollAnimationWrapper>
           ))}
         </div>
       </div>

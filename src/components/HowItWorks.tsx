@@ -1,4 +1,5 @@
 import { Download, MessageSquare, Heart, Rocket } from "lucide-react";
+import ScrollAnimationWrapper from "./ScrollAnimationWrapper";
 
 const steps = [
   {
@@ -32,7 +33,7 @@ const HowItWorks = () => {
     <section id="how-it-works" className="py-24 relative">
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <ScrollAnimationWrapper animation="fade-up" className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold font-display mb-4">
             <span className="text-foreground">How </span>
             <span className="luna-gradient-text">Luna Works</span>
@@ -40,7 +41,7 @@ const HowItWorks = () => {
           <p className="text-lg text-muted-foreground">
             Getting started with Luna is simple. Here's how you can begin your journey to a healthier, happier you.
           </p>
-        </div>
+        </ScrollAnimationWrapper>
 
         {/* Steps */}
         <div className="max-w-4xl mx-auto">
@@ -50,30 +51,33 @@ const HowItWorks = () => {
 
             <div className="space-y-12">
               {steps.map((step, index) => (
-                <div
+                <ScrollAnimationWrapper
                   key={step.step}
-                  className="flex gap-8 items-start group"
+                  animation={index % 2 === 0 ? "fade-right" : "fade-left"}
+                  delay={index * 0.15}
                 >
-                  {/* Icon */}
-                  <div className="relative">
-                    <div className="w-16 h-16 rounded-2xl luna-gradient-bg flex items-center justify-center luna-glow group-hover:scale-110 transition-transform duration-300">
-                      <step.icon className="w-8 h-8 text-background" />
+                  <div className="flex gap-8 items-start group">
+                    {/* Icon */}
+                    <div className="relative">
+                      <div className="w-16 h-16 rounded-2xl luna-gradient-bg flex items-center justify-center luna-glow group-hover:scale-110 transition-transform duration-300">
+                        <step.icon className="w-8 h-8 text-background" />
+                      </div>
+                      <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-background text-primary text-xs font-bold flex items-center justify-center border border-primary/50">
+                        {index + 1}
+                      </span>
                     </div>
-                    <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-background text-primary text-xs font-bold flex items-center justify-center border border-primary/50">
-                      {index + 1}
-                    </span>
-                  </div>
 
-                  {/* Content */}
-                  <div className="flex-1 pt-2">
-                    <h3 className="text-2xl font-semibold font-display text-foreground mb-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-muted-foreground text-lg leading-relaxed">
-                      {step.description}
-                    </p>
+                    {/* Content */}
+                    <div className="flex-1 pt-2">
+                      <h3 className="text-2xl font-semibold font-display text-foreground mb-2">
+                        {step.title}
+                      </h3>
+                      <p className="text-muted-foreground text-lg leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </ScrollAnimationWrapper>
               ))}
             </div>
           </div>
